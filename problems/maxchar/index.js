@@ -7,18 +7,26 @@
 
 function maxChar(str) {
   const chars = {};
-  let max = 0;
-  let charmax = "";
+
   for (let char of str) {
     chars[char] = chars[char] ? chars[char] + 1 : 1;
   }
-
-  for (let char in chars) {
-    if (chars[char] > max) {
-      max = chars[char];
-      charmax = char;
+  let max = 0;
+  let charmax = "";
+  //   1
+  //   for (let char in chars) {
+  //     if (chars[char] > max) {
+  //       max = chars[char];
+  //       charmax = char;
+  //     }
+  //   }
+  //   2
+  Object.entries(chars).map((obj) => {
+    if (obj[1] > max) {
+      max = obj[1];
+      charmax = obj[0];
     }
-  }
+  });
 
   return charmax;
 }
